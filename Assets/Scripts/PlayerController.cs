@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	private float moveVertical;
 	private bool isPlayerMoving;
 	private float playerSpeed = 0.2f;
-	private float playerRotationSpeed = 7f;
+	private float playerRotationSpeed = 2f;
 	private float playerRotationY = 0f;
 
 	private float playerJumpForce = 3f;
