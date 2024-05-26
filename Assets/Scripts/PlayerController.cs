@@ -12,11 +12,11 @@ public class PlayerController : MonoBehaviour {
 	private float moveHorizontal;
 	private float moveVertical;
 	private bool isPlayerMoving;
-	private float playerSpeed = 0.35f;
-	private float playerRotationSpeed = 3.2f;
+	private float playerSpeed = 0.3f;
+	private float playerRotationSpeed = 3f;
 	private float playerRotationY = 0f;
 
-	private float playerJumpForce = 3.2f;
+	private float playerJumpForce = 3f;
 	private bool canPlayerJump;
 
 	void Awake ()
@@ -31,13 +31,14 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 		PlayerKeyboardMovement();
+		AnimatePlayer();
 	}
 
-	void FixedUpdate () {
+	void FixedUpdate() {
 		MoveAndRotate();
 	}
 
-	void PlayerKeyboardMovement ()
+	void PlayerKeyboardMovement()
 	{
 		if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.LeftArrow)) {
 			moveHorizontal = -1;
@@ -80,5 +81,28 @@ public class PlayerController : MonoBehaviour {
 
 		playerRotationY += moveHorizontal * playerRotationSpeed;
 		playerRigidbody.rotation = Quaternion.Euler(0f, playerRotationY, 0f);
+	}
+
+	void AnimatePlayer ()
+	{
+
+		if (moveVertical != 0) {
+
+			if (!isPlayerMoving) {
+				if (moveVertical > 0 && !playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.RUN_ANIMATION)) {
+					isPlayerMoving = true;
+					playerAnimator.SetTrigger (TagsHelper.RUN_TRIGGER);	
+				}
+			}
+			// TODO: set animation to run back - motion/speed * -1
+		} else {
+
+			if (isPlayerMoving) {
+				if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(TagsHelper.RUN_ANIMATION)){
+					isPlayerMoving = false;
+					playerAnimator.SetTrigger(TagsHelper.STOP_TRIGGER);	
+				}
+			}
+		}
 	}
 }
