@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 	void Awake ()
 	{
 		playerRigidbody = GetComponent<Rigidbody>();
-		playerAnimator = GetComponent<Animator>();
+		playerAnimator = GetComponentInChildren<Animator>();
 	}
 
 	void Start () {
@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		PlayerKeyboardMovement();
 		AnimatePlayer();
+		Attack();
+		IsOnGround();
+		Jump();
 	}
 
 	void FixedUpdate() {
@@ -64,13 +67,13 @@ public class PlayerController : MonoBehaviour {
 			moveVertical = 0;
 		}
 
-		if (Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.DownArrow)) {
-			moveVertical = -1;
-		}
-
-		if (Input.GetKeyUp (KeyCode.S) || Input.GetKeyUp (KeyCode.DownArrow)) {
-			moveVertical = 0;
-		}
+//		if (Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.DownArrow)) {
+//			moveVertical = -1;
+//		}
+//
+//		if (Input.GetKeyUp (KeyCode.S) || Input.GetKeyUp (KeyCode.DownArrow)) {
+//			moveVertical = 0;
+//		}
 	}
 
 	void MoveAndRotate ()
@@ -89,7 +92,7 @@ public class PlayerController : MonoBehaviour {
 		if (moveVertical != 0) {
 
 			if (!isPlayerMoving) {
-				if (moveVertical > 0 && !playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.RUN_ANIMATION)) {
+				if (!playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.RUN_ANIMATION)) {
 					isPlayerMoving = true;
 					playerAnimator.SetTrigger (TagsHelper.RUN_TRIGGER);	
 				}
@@ -101,6 +104,40 @@ public class PlayerController : MonoBehaviour {
 				if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(TagsHelper.RUN_ANIMATION)){
 					isPlayerMoving = false;
 					playerAnimator.SetTrigger(TagsHelper.STOP_TRIGGER);	
+				}
+			}
+		}
+	}
+
+	void Attack ()
+	{
+		if (Input.GetKeyDown (KeyCode.K)) {
+			if (!playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.ATTACK_ANIMATION) ||
+				!playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.RUN_ATTACK_ANIMATION)) {
+
+				playerAnimator.SetTrigger (TagsHelper.ATTACK_TRIGGER);	
+			}
+		}
+	}
+
+	void IsOnGround ()
+	{
+		canPlayerJump = Physics.Raycast(groundCheck.position, Vector3.down, 0.1f, groundLayer);
+	}
+
+	void Jump ()
+	{
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			if (canPlayerJump){
+				canPlayerJump = false;
+
+				if (!playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.JUMP_ANIMATION) ||
+					!playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.RUN_JUMP_ANIMATION)) {
+
+					playerAnimator.SetTrigger (TagsHelper.JUMP_TRIGGER);	
+
+					// TODO: fix jump_animation and physics
+					playerRigidbody.MovePosition(transform.position + transform.up * (playerJumpForce * playerSpeed));
 				}
 			}
 		}
