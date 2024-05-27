@@ -40,8 +40,8 @@ public class PlayerHealth : MonoBehaviour {
 			// call game over
 			GameController.instance.isPlayerAlive = false;
 
-			// TODO: call game over panel
-
+			// call game over panel
+			GameController.instance.GameOver();
 		}
 	}
 
