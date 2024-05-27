@@ -1,6 +1,14 @@
 Last
 
-Game Assets:
+## Game Assets:
 
 Katana (sword) Low Poly Model
-	https://opengameart.org/content/katana-2
+->	https://opengameart.org/content/katana-2
+
+
+- 
+
+## Font
+
+Signwood:
+->	https://www.dafont.com/pt/signwood.font?l[]=10&l[]=1

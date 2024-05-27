@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 	private float playerJumpForce = 3f;
 	private bool canPlayerJump;
 
+	public GameObject damagePoint;
+
 	void Awake ()
 	{
 		playerRigidbody = GetComponent<Rigidbody>();
@@ -141,5 +143,13 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void ActivateDamagePoint() {
+		damagePoint.SetActive(true);
+	}
+
+	public void DeactivateDamagePoint() {
+		damagePoint.SetActive(false);
 	}
 }

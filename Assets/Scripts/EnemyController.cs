@@ -12,14 +12,25 @@ public class EnemyController : MonoBehaviour {
 	private float enemyWatchTreshold = 28f; // 70
 	private float enemyAttackTreshold = 1.5f; // 6
 
+	public GameObject damagePoint;
+
 	void Awake () {
 		player = GameObject.FindGameObjectWithTag(TagsHelper.PLAYER_TAG);
 		enemyRigidbody = GetComponent<Rigidbody>();
 		enemyAnimator = GetComponentInChildren<Animator>();
 	}
 	
-	void FixedUpdate () {
-		EnemyAI();	
+	void FixedUpdate ()
+	{
+
+		if (GameController.instance.isPlayerAlive) {
+			EnemyAI ();
+		} else {
+			if (enemyAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.RUN_ANIMATION) ||
+				enemyAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.ATTACK_ANIMATION)) {
+				enemyAnimator.SetTrigger (TagsHelper.STOP_TRIGGER);
+			}
+		}
 	}
 
 	void EnemyAI ()
@@ -66,5 +77,13 @@ public class EnemyController : MonoBehaviour {
 				enemyAnimator.SetTrigger (TagsHelper.STOP_TRIGGER);
 			}
 		}
+	}
+
+	public void ActivateDamagePoint() {
+		damagePoint.SetActive(true);
+	}
+
+	public void DeactivateDamagePoint() {
+		damagePoint.SetActive(false);
 	}
 }

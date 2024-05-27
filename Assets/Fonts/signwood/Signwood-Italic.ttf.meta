@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: aff3d352100a5234d9794af5f27dd9b2
+timeCreated: 1716829661
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Signwood
+  fontNames:
+  - Signwood
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 824ec614a4149bb45aefb42aeb2a4796, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

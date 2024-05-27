@@ -9,7 +9,7 @@ public class PlayerDamage : MonoBehaviour {
 
 	void Update ()
 	{
-		Collider[] hits = Physics.OverlapSphere (transform.position, 3f, enemyLayer);
+		Collider[] hits = Physics.OverlapSphere (transform.position, 10f, enemyLayer);
 
 
 		if (hits.Length > 0) {

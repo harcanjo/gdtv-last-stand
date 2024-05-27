@@ -15,6 +15,11 @@ public class PlayerHealth : MonoBehaviour {
 		playerAnimator =  GetComponentInChildren<Animator>();
 	}
 
+	void Start ()
+	{
+		GameController.instance.DisplayHealth(health);
+	}
+
 	public void ApplyDamage(int damageAmount){
 		health -= damageAmount;
 
@@ -23,14 +28,20 @@ public class PlayerHealth : MonoBehaviour {
 			health = 0;
 		}
 
-		// TODO: displayHealth value
+		// displayHealth value
+		// Debug.Log("Player Health: " + health);
+		GameController.instance.DisplayHealth(health);
 
 		if (health == 0)
 		{
 			playerController.enabled = false;
 			playerAnimator.Play(TagsHelper.DEAD_ANIMATION);
 
-			// TODO: call game over
+			// call game over
+			GameController.instance.isPlayerAlive = false;
+
+			// TODO: call game over panel
+
 		}
 	}
 

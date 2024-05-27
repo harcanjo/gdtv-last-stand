@@ -7,12 +7,12 @@ public class PlayerEventHelper : MonoBehaviour {
 	public PlayerController playerController;
 
 	public void CallActivateDamagePoint() {
-		// print("activated");
+		print("activated");
 		playerController.ActivateDamagePoint();
 	}
 
 	public void CallDeactivateDamagePoint() {
-		// print("deactivated");
+		print("deactivated");
 		playerController.DeactivateDamagePoint();
 	}
 }
