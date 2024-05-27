@@ -3,7 +3,12 @@ Last
 ## Game Assets:
 
 Katana (sword) Low Poly Model
-->	https://opengameart.org/content/katana-2
+-> https://opengameart.org/content/katana-2
+
+Plingy coin sound
+-> https://opengameart.org/content/plingy-coin
+
+
 
 
 - 
@@ -11,4 +16,4 @@ Katana (sword) Low Poly Model
 ## Font
 
 Signwood:
-->	https://www.dafont.com/pt/signwood.font?l[]=10&l[]=1
+-> https://www.dafont.com/pt/signwood.font?l[]=10&l[]=1
