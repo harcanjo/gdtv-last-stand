@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Attack ()
 	{
-		if (Input.GetKeyDown (KeyCode.K)) {
+		if (Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown (KeyCode.Mouse0) ) {
 			if (!playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.ATTACK_ANIMATION) ||
 				!playerAnimator.GetCurrentAnimatorStateInfo (0).IsName (TagsHelper.RUN_ATTACK_ANIMATION)) {
 

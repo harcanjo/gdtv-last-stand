@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
@@ -21,6 +22,12 @@ public class MenuController : MonoBehaviour {
 
 	public void CreditsBackMenu() {
 		creditsPanelAnimator.Play("SlideOut");
+	}
+
+	public void LoadLevel(string name){
+		// Debug.Log ("New Level load: " + name);
+		// Application.LoadLevel (name);
+		SceneManager.LoadScene(name);
 	}
 
 	public void QuitRequest(){

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -16,7 +17,7 @@ public class GameController : MonoBehaviour {
 	[HideInInspector]
 	public bool isPlayerAlive;
 
-	public float timerTime = 99f;
+	public float timerTime = 60f;
 
 	public GameObject endPanel;
 
@@ -41,7 +42,16 @@ public class GameController : MonoBehaviour {
 
 	void Update ()
 	{
-		CountdownTimer();
+		CountdownTimer ();
+
+		if (timerTime <= 0) {
+			GameOver();
+		}
+
+		// TODO: to restart level during development
+		if (Input.GetKeyDown (KeyCode.R)) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
 	}
 
 
@@ -74,7 +84,24 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GameOver() {
-		Time.timeScale = 0f;
+		// TODO: Block user input
+		// Time.timeScale = 0f;
 		endPanel.SetActive(true);
+	}
+
+	public void LoadLevel(string name){
+		// Debug.Log ("New Level load: " + name);
+		// Application.LoadLevel (name);
+		SceneManager.LoadScene(name);
+	}
+
+	// TODO: Create a restart level
+	public void RestartLevel ()
+	{
+		// Reset timescale to normal speed
+	    Time.timeScale = 1f;
+	    
+	    // Reload the scene
+	    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
