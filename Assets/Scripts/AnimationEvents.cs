@@ -7,14 +7,14 @@ public class AnimationEvents : MonoBehaviour {
 	public GameObject player;
 	public GameObject enemy;
 	public GameObject playButton;
-
-
+	public GameObject quitButton;
 
 	void DeactivateGameObjects ()
 	{
 		player.SetActive(false);
 		enemy.SetActive(false);
 		playButton.SetActive(false);
+		quitButton.SetActive(false);
 	}
 
 	void ActivateGameObjects ()
@@ -22,5 +22,6 @@ public class AnimationEvents : MonoBehaviour {
 		player.SetActive(true);
 		enemy.SetActive(true);
 		playButton.SetActive(true);
+		quitButton.SetActive(true);
 	}
 }
