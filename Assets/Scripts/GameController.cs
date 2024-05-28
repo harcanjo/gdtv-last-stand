@@ -20,16 +20,19 @@ public class GameController : MonoBehaviour {
 	public float timerTime = 60f;
 
 	public GameObject endPanel;
+	public GameObject winPanel;
+
 
 	void Awake ()
 	{
+		// Time.timeScale = 1f;
 		MakeInstance();
 
 		healthText = GameObject.Find("HealthText").GetComponent<Text>();
 		coinText = GameObject.Find("CoinText").GetComponent<Text>();
 		timerText = GameObject.Find("TimerText").GetComponent<Text>();
 
-		coinText.text = "Coins: " + coinScore;
+		coinText.text = "Coins: " + coinScore + " / 10";
 	}
 
 	void Start ()
@@ -37,6 +40,7 @@ public class GameController : MonoBehaviour {
 		isPlayerAlive = true;
 
 		endPanel.SetActive(false);
+		winPanel.SetActive(false);
 	}
 
 
@@ -46,6 +50,10 @@ public class GameController : MonoBehaviour {
 
 		if (timerTime <= 0) {
 			GameOver();
+		}
+
+		if (coinScore >= 10) {
+			GameWin();
 		}
 
 		// TODO: to restart level during development
@@ -67,7 +75,7 @@ public class GameController : MonoBehaviour {
 	public void CoinCollected ()
 	{
 		coinScore++;
-		coinText.text = "Coins: " + coinScore;
+		coinText.text = "Coins: " + coinScore + " / 10";
 	}
 
 
@@ -87,6 +95,12 @@ public class GameController : MonoBehaviour {
 		// TODO: Block user input
 		// Time.timeScale = 0f;
 		endPanel.SetActive(true);
+	}
+
+	public void GameWin() {
+		// TODO: Block user input
+		// Time.timeScale = 0f;
+		winPanel.SetActive(true);
 	}
 
 	public void LoadLevel(string name){

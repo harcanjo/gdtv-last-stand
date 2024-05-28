@@ -8,6 +8,11 @@ public class MenuController : MonoBehaviour {
 	public Animator levelPanelAnimator;
 	public Animator creditsPanelAnimator;
 
+	void Awake ()
+	{
+		// Time.timeScale = 0f;
+	}
+
 	public void PlayGame() {
 		levelPanelAnimator.Play("SlideIn");
 	}
