@@ -2,22 +2,7 @@ Last
 
 ## Game Assets:
 
-Katana (sword) Low Poly Model
--> https://opengameart.org/content/katana-2
-
-Plingy coin sound
--> https://opengameart.org/content/plingy-coin
-
-Mountain at Dusk Background
--> https://opengameart.org/content/mountain-at-dusk-background
-
-
-- 
-
-## Font
-
-Signwood:
--> https://www.dafont.com/pt/signwood.font?l[]=10&l[]=1
+Katana (sword) Low Poly Model (https://opengameart.org/content/katana-2), Plingy coin sound (https://opengameart.org/content/plingy-coin), Mountain at Dusk Background (https://opengameart.org/content/mountain-at-dusk-background), Signwood (https://www.dafont.com/pt/signwood.font?l[]=10&l[]=1), Game characters from MakeHuman, Game characters animations from mixamo.com.
 
 
 Game Feel

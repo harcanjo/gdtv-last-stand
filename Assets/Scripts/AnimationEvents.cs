@@ -8,6 +8,7 @@ public class AnimationEvents : MonoBehaviour {
 	public GameObject enemy;
 	public GameObject playButton;
 	public GameObject quitButton;
+	public GameObject logoPanel;
 
 	void DeactivateGameObjects ()
 	{
@@ -15,6 +16,7 @@ public class AnimationEvents : MonoBehaviour {
 		enemy.SetActive(false);
 		playButton.SetActive(false);
 		quitButton.SetActive(false);
+		logoPanel.SetActive(false);
 	}
 
 	void ActivateGameObjects ()
@@ -23,5 +25,6 @@ public class AnimationEvents : MonoBehaviour {
 		enemy.SetActive(true);
 		playButton.SetActive(true);
 		quitButton.SetActive(true);
+		logoPanel.SetActive(true);
 	}
 }

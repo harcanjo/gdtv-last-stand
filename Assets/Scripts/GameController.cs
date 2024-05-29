@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour {
 
 	void Update ()
 	{
-		CountdownTimer ();
+		CountdownTimer();
 
 		if (timerTime <= 0) {
 			GameOver();
